@@ -51,6 +51,19 @@
             --radius-2xl: 1.5rem;
             
             --transition: all 0.3s ease;
+            
+            /* Spacing system - 8px base */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
         }
         
         *, *::before, *::after {
@@ -80,11 +93,11 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 var(--space-6);
         }
         
         .section {
-            padding: 5rem 0;
+            padding: var(--space-20) 0;
         }
         
         .section-alt {
@@ -95,7 +108,7 @@
             font-size: 2rem;
             font-weight: 800;
             color: var(--azul-principal);
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-4);
             text-align: center;
         }
         
@@ -104,21 +117,35 @@
             color: var(--cinza-600);
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 3rem;
+            margin: 0 auto var(--space-12);
+            line-height: 1.7;
         }
         
+        /* ============================================
+           BUTTONS - Padronizados
+           ============================================ */
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.875rem 1.75rem;
+            justify-content: center;
+            gap: var(--space-3);
+            padding: var(--space-4) var(--space-6);
             font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: var(--radius-lg);
             transition: var(--transition);
             cursor: pointer;
-            border: none;
+            border: 2px solid transparent;
+            min-height: 48px;
+            line-height: 1.2;
+        }
+        
+        .btn svg,
+        .btn i {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
         }
         
         .btn-primary {
@@ -135,7 +162,7 @@
         .btn-secondary {
             background: var(--branco);
             color: var(--azul-principal);
-            border: 2px solid var(--azul-principal);
+            border-color: var(--azul-principal);
         }
         
         .btn-secondary:hover {
@@ -179,6 +206,11 @@
             height: 72px;
         }
         
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+        
         .logo {
             height: 48px;
             width: auto;
@@ -193,7 +225,7 @@
         .nav {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: var(--space-8);
         }
         
         .nav-link {
@@ -203,12 +235,13 @@
             text-decoration: none;
             transition: var(--transition);
             position: relative;
+            padding: var(--space-2) 0;
         }
         
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -225,17 +258,23 @@
         }
         
         .nav-cta {
-            padding: 0.625rem 1.25rem;
+            padding: var(--space-3) var(--space-5);
             font-size: 0.875rem;
+            min-height: 40px;
         }
         
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            padding: 0.5rem;
+            padding: var(--space-2);
             cursor: pointer;
             color: var(--cinza-700);
+            border-radius: var(--radius);
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--cinza-100);
         }
         
         .mobile-nav {
@@ -246,9 +285,11 @@
             right: 0;
             background: var(--branco);
             box-shadow: var(--shadow-lg);
-            padding: 1.5rem;
+            padding: var(--space-6);
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-2);
+            max-height: calc(100vh - 72px);
+            overflow-y: auto;
         }
         
         .mobile-nav.active {
@@ -256,8 +297,13 @@
         }
         
         .mobile-nav .nav-link {
-            padding: 0.75rem 0;
+            padding: var(--space-4);
             border-bottom: 1px solid var(--cinza-200);
+            font-size: 1rem;
+        }
+        
+        .mobile-nav .btn {
+            margin-top: var(--space-4);
         }
         
         /* ============================================
@@ -265,7 +311,7 @@
            ============================================ */
         .hero {
             padding-top: 120px;
-            padding-bottom: 5rem;
+            padding-bottom: var(--space-20);
             background: linear-gradient(180deg, var(--cinza-50) 0%, var(--branco) 100%);
             position: relative;
             overflow: hidden;
@@ -286,7 +332,7 @@
         .hero-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: var(--space-16);
             align-items: center;
             position: relative;
             z-index: 1;
@@ -299,22 +345,27 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: var(--space-2);
             background: linear-gradient(135deg, var(--verde) 0%, var(--verde-escuro) 100%);
             color: var(--branco);
-            padding: 0.5rem 1rem;
+            padding: var(--space-2) var(--space-4);
             border-radius: 2rem;
             font-size: 0.875rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-6);
+        }
+        
+        .hero-badge svg {
+            width: 16px;
+            height: 16px;
         }
         
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.25rem;
             font-weight: 800;
             color: var(--azul-principal);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            margin-bottom: var(--space-6);
         }
         
         .hero-title span {
@@ -325,15 +376,15 @@
         }
         
         .hero-description {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             color: var(--cinza-600);
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-8);
             line-height: 1.7;
         }
         
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: var(--space-4);
             flex-wrap: wrap;
         }
         
@@ -346,7 +397,7 @@
             background: var(--branco);
             border-radius: var(--radius-2xl);
             box-shadow: var(--shadow-xl);
-            padding: 2rem;
+            padding: var(--space-6);
             position: relative;
         }
         
@@ -365,9 +416,9 @@
         .hero-card-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
             border-bottom: 1px solid var(--cinza-200);
         }
         
@@ -380,6 +431,12 @@
             align-items: center;
             justify-content: center;
             color: var(--branco);
+            flex-shrink: 0;
+        }
+        
+        .hero-card-icon svg {
+            width: 28px;
+            height: 28px;
         }
         
         .hero-card-title {
@@ -391,48 +448,54 @@
         .hero-card-subtitle {
             font-size: 0.875rem;
             color: var(--cinza-500);
+            margin-top: var(--space-1);
         }
         
         .hero-card-items {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: var(--space-3);
         }
         
         .hero-card-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-4);
             background: var(--cinza-50);
             border-radius: var(--radius);
         }
         
-        .hero-card-item i {
+        .hero-card-item svg {
             color: var(--verde);
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
         }
         
         .hero-card-item span {
             font-size: 0.9375rem;
             color: var(--cinza-700);
+            line-height: 1.4;
         }
         
         /* ============================================
-           O QUE É O DTEL
+           ABOUT SECTION - O que é o DTEL
            ============================================ */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: var(--space-8);
         }
         
         .about-card {
             background: var(--branco);
             border-radius: var(--radius-xl);
-            padding: 2rem;
+            padding: var(--space-8);
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--cinza-200);
+            text-align: center;
         }
         
         .about-card:hover {
@@ -442,15 +505,20 @@
         }
         
         .about-icon {
-            width: 64px;
-            height: 64px;
+            width: 72px;
+            height: 72px;
             background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-claro) 100%);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--branco);
-            margin-bottom: 1.5rem;
+            margin: 0 auto var(--space-6);
+        }
+        
+        .about-icon svg {
+            width: 32px;
+            height: 32px;
         }
         
         .about-card:nth-child(2) .about-icon {
@@ -465,7 +533,7 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--azul-principal);
-            margin-bottom: 0.75rem;
+            margin-bottom: var(--space-3);
         }
         
         .about-card p {
@@ -475,12 +543,12 @@
         }
         
         /* ============================================
-           QUEM DEVE SE CREDENCIAR
+           CREDENCIAMENTO SECTION
            ============================================ */
         .credenciamento-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: var(--space-8);
         }
         
         .credenciamento-card {
@@ -492,10 +560,16 @@
         }
         
         .credenciamento-header {
-            padding: 1.5rem 2rem;
+            padding: var(--space-5) var(--space-6);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: var(--space-4);
+        }
+        
+        .credenciamento-header svg {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
         }
         
         .credenciamento-card.obrigatorio .credenciamento-header {
@@ -509,12 +583,12 @@
         }
         
         .credenciamento-header h3 {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 700;
         }
         
         .credenciamento-body {
-            padding: 2rem;
+            padding: var(--space-6);
         }
         
         .credenciamento-list {
@@ -524,25 +598,32 @@
         .credenciamento-list li {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
+            gap: var(--space-3);
+            padding: var(--space-4) 0;
             border-bottom: 1px solid var(--cinza-100);
         }
         
         .credenciamento-list li:last-child {
             border-bottom: none;
+            padding-bottom: 0;
         }
         
-        .credenciamento-list i {
+        .credenciamento-list li:first-child {
+            padding-top: 0;
+        }
+        
+        .credenciamento-list svg {
             flex-shrink: 0;
-            margin-top: 0.125rem;
+            margin-top: 2px;
+            width: 20px;
+            height: 20px;
         }
         
-        .credenciamento-card.obrigatorio .credenciamento-list i {
+        .credenciamento-card.obrigatorio .credenciamento-list svg {
             color: var(--azul-principal);
         }
         
-        .credenciamento-card.facultativo .credenciamento-list i {
+        .credenciamento-card.facultativo .credenciamento-list svg {
             color: var(--verde);
         }
         
@@ -553,7 +634,7 @@
         }
         
         /* ============================================
-           COMO SE CREDENCIAR - TIMELINE
+           TIMELINE - Como se credenciar
            ============================================ */
         .timeline {
             position: relative;
@@ -574,8 +655,8 @@
         
         .timeline-item {
             position: relative;
-            padding-left: 80px;
-            padding-bottom: 2.5rem;
+            padding-left: 88px;
+            padding-bottom: var(--space-10);
         }
         
         .timeline-item:last-child {
@@ -618,7 +699,7 @@
         .timeline-content {
             background: var(--branco);
             border-radius: var(--radius-xl);
-            padding: 1.5rem;
+            padding: var(--space-6);
             box-shadow: var(--shadow);
             border: 1px solid var(--cinza-200);
         }
@@ -627,7 +708,7 @@
             font-size: 1.125rem;
             font-weight: 700;
             color: var(--azul-principal);
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-2);
         }
         
         .timeline-content p {
@@ -636,37 +717,53 @@
             line-height: 1.7;
         }
         
+        .timeline-content a {
+            color: var(--azul-principal);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        
         .timeline-methods {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: var(--space-2);
+            margin-top: var(--space-4);
         }
         
         .timeline-method {
             display: inline-flex;
             align-items: center;
-            gap: 0.375rem;
+            gap: var(--space-2);
             background: var(--cinza-100);
-            padding: 0.375rem 0.75rem;
+            padding: var(--space-2) var(--space-3);
             border-radius: var(--radius);
             font-size: 0.8125rem;
             color: var(--cinza-700);
         }
         
+        .timeline-method svg {
+            width: 14px;
+            height: 14px;
+        }
+        
+        .timeline-cta {
+            text-align: center;
+            margin-top: var(--space-12);
+        }
+        
         /* ============================================
-           SERVIÇOS DISPONÍVEIS
+           SERVIÇOS GRID
            ============================================ */
         .servicos-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            gap: var(--space-6);
         }
         
         .servico-card {
             background: var(--branco);
             border-radius: var(--radius-lg);
-            padding: 1.5rem;
+            padding: var(--space-6);
             text-align: center;
             box-shadow: var(--shadow);
             border: 1px solid var(--cinza-200);
@@ -687,9 +784,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            margin: 0 auto var(--space-4);
             color: var(--azul-principal);
             transition: var(--transition);
+        }
+        
+        .servico-icon svg {
+            width: 28px;
+            height: 28px;
         }
         
         .servico-card:hover .servico-icon {
@@ -705,12 +807,12 @@
         }
         
         /* ============================================
-           PRAZOS E CIÊNCIA
+           PRAZOS SECTION
            ============================================ */
         .prazos-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: var(--space-12);
             align-items: center;
         }
         
@@ -721,7 +823,7 @@
         .prazos-diagram {
             background: var(--branco);
             border-radius: var(--radius-xl);
-            padding: 2rem;
+            padding: var(--space-8);
             box-shadow: var(--shadow-lg);
             border: 2px solid var(--azul-principal);
         }
@@ -731,20 +833,29 @@
             font-weight: 700;
             color: var(--azul-principal);
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+        
+        .prazos-diagram-title svg {
+            width: 20px;
+            height: 20px;
         }
         
         .prazos-flow {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-4);
         }
         
         .prazos-flow-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
+            gap: var(--space-4);
+            padding: var(--space-4);
             background: var(--cinza-50);
             border-radius: var(--radius);
             position: relative;
@@ -754,10 +865,10 @@
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -1rem;
+            bottom: calc(-1 * var(--space-4));
             transform: translateX(-50%);
             width: 2px;
-            height: 1rem;
+            height: var(--space-4);
             background: var(--azul-claro);
         }
         
@@ -766,8 +877,8 @@
         }
         
         .prazos-flow-icon {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: var(--azul-principal);
             border-radius: 50%;
             display: flex;
@@ -775,6 +886,11 @@
             justify-content: center;
             color: var(--branco);
             flex-shrink: 0;
+        }
+        
+        .prazos-flow-icon svg {
+            width: 20px;
+            height: 20px;
         }
         
         .prazos-flow-item:nth-child(2) .prazos-flow-icon {
@@ -788,22 +904,25 @@
         .prazos-flow-text {
             font-size: 0.875rem;
             color: var(--cinza-700);
+            line-height: 1.5;
         }
         
         .prazos-flow-text strong {
             color: var(--azul-principal);
+            display: block;
+            margin-bottom: var(--space-1);
         }
         
         .prazos-content h3 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--azul-principal);
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-4);
         }
         
         .prazos-content p {
             color: var(--cinza-600);
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-6);
             line-height: 1.7;
         }
         
@@ -811,16 +930,18 @@
             background: linear-gradient(135deg, rgba(245, 197, 24, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%);
             border-left: 4px solid var(--amarelo);
             border-radius: 0 var(--radius) var(--radius) 0;
-            padding: 1rem 1.25rem;
+            padding: var(--space-4) var(--space-5);
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
+            gap: var(--space-3);
         }
         
-        .prazos-alert i {
+        .prazos-alert svg {
             color: var(--amarelo);
             flex-shrink: 0;
-            margin-top: 0.125rem;
+            margin-top: 2px;
+            width: 20px;
+            height: 20px;
         }
         
         .prazos-alert p {
@@ -830,17 +951,17 @@
         }
         
         /* ============================================
-           FAQ
+           FAQ SECTION
            ============================================ */
         .faq-search {
             max-width: 500px;
-            margin: 0 auto 3rem;
+            margin: 0 auto var(--space-12);
             position: relative;
         }
         
         .faq-search input {
             width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
+            padding: var(--space-4) var(--space-4) var(--space-4) var(--space-12);
             font-size: 1rem;
             font-family: inherit;
             border: 2px solid var(--cinza-200);
@@ -854,12 +975,14 @@
             box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
         }
         
-        .faq-search i {
+        .faq-search svg {
             position: absolute;
-            left: 1rem;
+            left: var(--space-4);
             top: 50%;
             transform: translateY(-50%);
             color: var(--cinza-400);
+            width: 20px;
+            height: 20px;
         }
         
         .faq-list {
@@ -867,7 +990,7 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-4);
         }
         
         .faq-item {
@@ -889,16 +1012,17 @@
         
         .faq-question {
             width: 100%;
-            padding: 1.25rem 1.5rem;
+            padding: var(--space-5) var(--space-6);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 1rem;
+            gap: var(--space-4);
             background: none;
             border: none;
             cursor: pointer;
             text-align: left;
             font-family: inherit;
+            min-height: 56px;
         }
         
         .faq-question span {
@@ -907,19 +1031,21 @@
             color: var(--cinza-800);
         }
         
-        .faq-question i {
+        .faq-question svg {
             color: var(--azul-principal);
             transition: var(--transition);
             flex-shrink: 0;
+            width: 20px;
+            height: 20px;
         }
         
-        .faq-item.active .faq-question i {
+        .faq-item.active .faq-question svg {
             transform: rotate(180deg);
         }
         
         .faq-answer {
             display: none;
-            padding: 0 1.5rem 1.25rem;
+            padding: 0 var(--space-6) var(--space-5);
         }
         
         .faq-item.active .faq-answer {
@@ -933,31 +1059,37 @@
         }
         
         .faq-answer ul {
-            margin: 0.75rem 0;
-            padding-left: 1.5rem;
+            margin: var(--space-3) 0;
+            padding-left: var(--space-6);
         }
         
         .faq-answer li {
             color: var(--cinza-600);
             font-size: 0.9375rem;
             line-height: 1.7;
-            margin-bottom: 0.375rem;
+            margin-bottom: var(--space-2);
         }
         
         .faq-no-results {
             text-align: center;
-            padding: 2rem;
+            padding: var(--space-8);
             color: var(--cinza-500);
             display: none;
         }
         
+        .faq-no-results svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: var(--space-4);
+        }
+        
         /* ============================================
-           LEGISLAÇÃO
+           LEGISLAÇÃO SECTION
            ============================================ */
         .legislacao-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: var(--space-6);
             max-width: 900px;
             margin: 0 auto;
         }
@@ -965,7 +1097,7 @@
         .legislacao-card {
             background: var(--branco);
             border-radius: var(--radius-xl);
-            padding: 2rem;
+            padding: var(--space-8);
             text-align: center;
             box-shadow: var(--shadow);
             border: 1px solid var(--cinza-200);
@@ -987,9 +1119,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            margin: 0 auto var(--space-4);
             color: var(--azul-principal);
             transition: var(--transition);
+        }
+        
+        .legislacao-icon svg {
+            width: 32px;
+            height: 32px;
         }
         
         .legislacao-card:hover .legislacao-icon {
@@ -1001,7 +1138,7 @@
             font-size: 1rem;
             font-weight: 700;
             color: var(--azul-principal);
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-2);
         }
         
         .legislacao-card p {
@@ -1015,19 +1152,19 @@
         .footer {
             background: var(--azul-escuro);
             color: var(--branco);
-            padding: 4rem 0 2rem;
+            padding: var(--space-16) 0 var(--space-8);
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: var(--space-12);
+            margin-bottom: var(--space-12);
         }
         
         .footer-brand .logo {
             height: 40px;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-4);
             filter: brightness(0) invert(1);
         }
         
@@ -1040,7 +1177,7 @@
         .footer-title {
             font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-4);
         }
         
         .footer-links {
@@ -1048,7 +1185,7 @@
         }
         
         .footer-links li {
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-2);
         }
         
         .footer-links a {
@@ -1065,18 +1202,21 @@
         .footer-contact-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9375rem;
         }
         
-        .footer-contact-item i {
+        .footer-contact-item svg {
             color: var(--amarelo);
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
         }
         
         .footer-bottom {
-            padding-top: 2rem;
+            padding-top: var(--space-8);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             color: rgba(255, 255, 255, 0.5);
@@ -1088,8 +1228,8 @@
            ============================================ */
         .back-to-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: var(--space-8);
+            right: var(--space-8);
             width: 48px;
             height: 48px;
             background: var(--azul-principal);
@@ -1105,6 +1245,11 @@
             opacity: 0;
             visibility: hidden;
             z-index: 999;
+        }
+        
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
         }
         
         .back-to-top.visible {
@@ -1157,29 +1302,30 @@
            RESPONSIVE - TABLET (max-width: 1024px)
            ============================================ */
         @media (max-width: 1024px) {
+            :root {
+                --space-20: 4rem;
+                --space-16: 3rem;
+                --space-12: 2.5rem;
+            }
+            
             .container {
-                padding: 0 1.25rem;
+                padding: 0 var(--space-5);
             }
             
-            .section {
-                padding: 3.5rem 0;
-            }
-            
-            /* Hero Tablet */
             .hero {
                 padding-top: 100px;
-                padding-bottom: 3rem;
+                padding-bottom: var(--space-12);
             }
             
             .hero-inner {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: var(--space-8);
                 text-align: center;
             }
             
             .hero-visual {
                 order: -1;
-                max-width: 500px;
+                max-width: 480px;
                 margin: 0 auto;
             }
             
@@ -1190,58 +1336,45 @@
             }
             
             .hero-title {
-                font-size: 2.75rem;
-            }
-            
-            .hero-description {
-                font-size: 1.125rem;
+                font-size: 2.5rem;
             }
             
             .hero-buttons {
                 justify-content: center;
             }
             
-            /* About Grid Tablet */
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: var(--space-6);
             }
             
             .about-card {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 1.5rem;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: var(--space-6);
                 text-align: left;
+                padding: var(--space-6);
             }
             
             .about-icon {
-                flex-shrink: 0;
-                margin-bottom: 0;
+                margin: 0;
             }
             
-            /* Serviços Tablet */
+            .about-card h3 {
+                margin-bottom: var(--space-2);
+            }
+            
             .servicos-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
             }
             
-            /* Prazos Tablet */
             .prazos-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: var(--space-8);
             }
             
             .prazos-content {
                 order: -1;
-            }
-            
-            .prazos-content h3,
-            .prazos-content .section-title {
-                text-align: center;
-            }
-            
-            .prazos-content p {
                 text-align: center;
             }
             
@@ -1249,10 +1382,9 @@
                 text-align: left;
             }
             
-            /* Footer Tablet */
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 2rem;
+                gap: var(--space-8);
             }
             
             .footer-brand {
@@ -1261,34 +1393,35 @@
             }
             
             .footer-brand .logo {
-                margin: 0 auto 1rem;
+                margin: 0 auto var(--space-4);
             }
         }
         
         /* ============================================
-           RESPONSIVE - MOBILE LARGE (max-width: 768px)
+           RESPONSIVE - MOBILE (max-width: 768px)
            ============================================ */
         @media (max-width: 768px) {
+            :root {
+                --space-20: 3rem;
+                --space-16: 2.5rem;
+                --space-12: 2rem;
+            }
+            
             html {
                 scroll-padding-top: 70px;
             }
             
             .container {
-                padding: 0 1rem;
-            }
-            
-            .section {
-                padding: 3rem 0;
+                padding: 0 var(--space-4);
             }
             
             .section-title {
-                font-size: 1.625rem;
-                margin-bottom: 0.75rem;
+                font-size: 1.5rem;
             }
             
             .section-subtitle {
                 font-size: 1rem;
-                margin-bottom: 2rem;
+                margin-bottom: var(--space-8);
             }
             
             /* Header Mobile */
@@ -1301,7 +1434,9 @@
             }
             
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
             .logo {
@@ -1314,86 +1449,63 @@
             }
             
             .mobile-nav {
-                padding: 1rem;
-            }
-            
-            .mobile-nav .nav-link {
-                padding: 0.875rem 0;
-                font-size: 1rem;
+                top: 64px;
             }
             
             /* Hero Mobile */
             .hero {
-                padding-top: 84px;
-                padding-bottom: 2.5rem;
+                padding-top: 88px;
+                padding-bottom: var(--space-10);
             }
             
             .hero::before {
                 display: none;
             }
             
-            .hero-inner {
-                gap: 1.5rem;
-            }
-            
             .hero-badge {
-                padding: 0.375rem 0.75rem;
                 font-size: 0.8125rem;
-                margin-bottom: 1rem;
+                padding: var(--space-2) var(--space-3);
             }
             
             .hero-title {
-                font-size: 2rem;
-                line-height: 1.2;
-                margin-bottom: 1rem;
+                font-size: 1.875rem;
+                margin-bottom: var(--space-4);
             }
             
             .hero-description {
                 font-size: 1rem;
-                margin-bottom: 1.5rem;
-                line-height: 1.6;
+                margin-bottom: var(--space-6);
             }
             
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
-                gap: 0.75rem;
             }
             
             .hero-buttons .btn {
                 width: 100%;
-                justify-content: center;
-                padding: 1rem 1.5rem;
             }
             
-            /* Hero Card Mobile */
             .hero-visual {
                 max-width: 100%;
             }
             
             .hero-card {
-                padding: 1.25rem;
-                border-radius: var(--radius-xl);
-            }
-            
-            .hero-card::before {
-                border-radius: calc(var(--radius-xl) + 3px);
+                padding: var(--space-5);
             }
             
             .hero-card-header {
-                margin-bottom: 1rem;
-                padding-bottom: 0.75rem;
-                gap: 0.75rem;
+                gap: var(--space-3);
             }
             
             .hero-card-icon {
-                width: 44px;
-                height: 44px;
+                width: 48px;
+                height: 48px;
             }
             
-            .hero-card-icon i {
-                width: 22px !important;
-                height: 22px !important;
+            .hero-card-icon svg {
+                width: 24px;
+                height: 24px;
             }
             
             .hero-card-title {
@@ -1404,52 +1516,29 @@
                 font-size: 0.8125rem;
             }
             
-            .hero-card-items {
-                gap: 0.5rem;
-            }
-            
             .hero-card-item {
-                padding: 0.625rem;
-                gap: 0.625rem;
-            }
-            
-            .hero-card-item i {
-                width: 18px !important;
-                height: 18px !important;
-                flex-shrink: 0;
+                padding: var(--space-3);
             }
             
             .hero-card-item span {
                 font-size: 0.875rem;
-                line-height: 1.4;
             }
             
-            /* About Cards Mobile */
-            .about-grid {
-                gap: 1rem;
-            }
-            
+            /* About Mobile */
             .about-card {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 text-align: center;
-                padding: 1.5rem;
-                gap: 0;
+                padding: var(--space-6);
             }
             
             .about-icon {
-                width: 56px;
-                height: 56px;
-                margin: 0 auto 1rem;
-            }
-            
-            .about-icon i {
-                width: 28px !important;
-                height: 28px !important;
+                width: 64px;
+                height: 64px;
+                margin: 0 auto var(--space-4);
             }
             
             .about-card h3 {
                 font-size: 1.125rem;
-                margin-bottom: 0.5rem;
             }
             
             .about-card p {
@@ -1459,34 +1548,19 @@
             /* Credenciamento Mobile */
             .credenciamento-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: var(--space-6);
             }
             
             .credenciamento-header {
-                padding: 1.25rem 1.5rem;
-            }
-            
-            .credenciamento-header i {
-                width: 24px !important;
-                height: 24px !important;
+                padding: var(--space-4) var(--space-5);
             }
             
             .credenciamento-header h3 {
-                font-size: 1.0625rem;
+                font-size: 1rem;
             }
             
             .credenciamento-body {
-                padding: 1.25rem 1.5rem;
-            }
-            
-            .credenciamento-list li {
-                padding: 0.625rem 0;
-                gap: 0.625rem;
-            }
-            
-            .credenciamento-list i {
-                width: 18px !important;
-                height: 18px !important;
+                padding: var(--space-5);
             }
             
             .credenciamento-list span {
@@ -1500,8 +1574,8 @@
             }
             
             .timeline-item {
-                padding-left: 56px;
-                padding-bottom: 2rem;
+                padding-left: 60px;
+                padding-bottom: var(--space-8);
             }
             
             .timeline-number {
@@ -1512,110 +1586,69 @@
             }
             
             .timeline-content {
-                padding: 1.25rem;
+                padding: var(--space-5);
             }
             
             .timeline-content h3 {
                 font-size: 1rem;
-                margin-bottom: 0.375rem;
             }
             
             .timeline-content p {
                 font-size: 0.875rem;
             }
             
-            .timeline-methods {
-                margin-top: 0.75rem;
-                gap: 0.375rem;
-            }
-            
             .timeline-method {
                 font-size: 0.75rem;
-                padding: 0.25rem 0.625rem;
             }
             
             /* Serviços Mobile */
             .servicos-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
+                gap: var(--space-4);
             }
             
             .servico-card {
-                padding: 1.25rem 1rem;
+                padding: var(--space-5) var(--space-4);
             }
             
             .servico-icon {
                 width: 48px;
                 height: 48px;
-                margin-bottom: 0.75rem;
             }
             
-            .servico-icon i {
-                width: 24px !important;
-                height: 24px !important;
+            .servico-icon svg {
+                width: 24px;
+                height: 24px;
             }
             
             .servico-card h4 {
                 font-size: 0.8125rem;
-                line-height: 1.3;
             }
             
             /* Prazos Mobile */
             .prazos-diagram {
-                padding: 1.25rem;
+                padding: var(--space-5);
             }
             
             .prazos-diagram-title {
                 font-size: 0.9375rem;
-                margin-bottom: 1rem;
-            }
-            
-            .prazos-flow {
-                gap: 0.75rem;
-            }
-            
-            .prazos-flow-item {
-                padding: 0.75rem;
-                gap: 0.75rem;
-            }
-            
-            .prazos-flow-item::after {
-                height: 0.75rem;
-                bottom: -0.75rem;
             }
             
             .prazos-flow-icon {
-                width: 36px;
-                height: 36px;
-            }
-            
-            .prazos-flow-icon i {
-                width: 18px !important;
-                height: 18px !important;
+                width: 40px;
+                height: 40px;
             }
             
             .prazos-flow-text {
                 font-size: 0.8125rem;
             }
             
-            .prazos-content h3,
-            .prazos-content .section-title {
+            .prazos-content h3 {
                 font-size: 1.5rem;
             }
             
             .prazos-content p {
                 font-size: 0.9375rem;
-                margin-bottom: 1rem;
-            }
-            
-            .prazos-alert {
-                padding: 0.875rem 1rem;
-                gap: 0.625rem;
-            }
-            
-            .prazos-alert i {
-                width: 18px !important;
-                height: 18px !important;
             }
             
             .prazos-alert p {
@@ -1624,50 +1657,27 @@
             
             /* FAQ Mobile */
             .faq-search {
-                margin-bottom: 2rem;
+                margin-bottom: var(--space-8);
             }
             
             .faq-search input {
-                padding: 0.875rem 0.875rem 0.875rem 2.75rem;
+                padding: var(--space-4) var(--space-4) var(--space-4) var(--space-10);
                 font-size: 0.9375rem;
             }
             
-            .faq-search i {
-                left: 0.875rem;
-                width: 18px !important;
-                height: 18px !important;
-            }
-            
-            .faq-list {
-                gap: 0.75rem;
-            }
-            
             .faq-question {
-                padding: 1rem 1.25rem;
-                gap: 0.75rem;
+                padding: var(--space-4) var(--space-5);
             }
             
             .faq-question span {
                 font-size: 0.9375rem;
             }
             
-            .faq-question i {
-                width: 18px !important;
-                height: 18px !important;
-            }
-            
             .faq-answer {
-                padding: 0 1.25rem 1rem;
+                padding: 0 var(--space-5) var(--space-4);
             }
             
-            .faq-answer p {
-                font-size: 0.875rem;
-            }
-            
-            .faq-answer ul {
-                padding-left: 1.25rem;
-            }
-            
+            .faq-answer p,
             .faq-answer li {
                 font-size: 0.875rem;
             }
@@ -1675,15 +1685,14 @@
             /* Legislação Mobile */
             .legislacao-cards {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: var(--space-4);
             }
             
             .legislacao-card {
-                padding: 1.5rem;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 1rem;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: var(--space-4);
+                padding: var(--space-5);
                 text-align: left;
             }
             
@@ -1691,17 +1700,10 @@
                 width: 52px;
                 height: 52px;
                 margin: 0;
-                flex-shrink: 0;
-            }
-            
-            .legislacao-icon i {
-                width: 26px !important;
-                height: 26px !important;
             }
             
             .legislacao-card h4 {
                 font-size: 0.9375rem;
-                margin-bottom: 0.25rem;
             }
             
             .legislacao-card p {
@@ -1710,13 +1712,13 @@
             
             /* Footer Mobile */
             .footer {
-                padding: 3rem 0 1.5rem;
+                padding: var(--space-12) 0 var(--space-6);
             }
             
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
                 text-align: center;
+                gap: var(--space-8);
             }
             
             .footer-brand {
@@ -1727,164 +1729,79 @@
                 height: 32px;
             }
             
-            .footer-brand p {
-                font-size: 0.875rem;
-            }
-            
-            .footer-title {
-                font-size: 1rem;
-            }
-            
-            .footer-links a {
-                font-size: 0.875rem;
-            }
-            
             .footer-contact-item {
                 justify-content: center;
-                font-size: 0.875rem;
-            }
-            
-            .footer-bottom {
-                padding-top: 1.5rem;
-            }
-            
-            .footer-bottom p {
-                font-size: 0.8125rem;
             }
             
             /* Back to Top Mobile */
             .back-to-top {
                 width: 44px;
                 height: 44px;
-                bottom: 1.5rem;
-                right: 1.5rem;
+                bottom: var(--space-6);
+                right: var(--space-4);
             }
             
-            .back-to-top i {
-                width: 20px !important;
-                height: 20px !important;
+            .back-to-top svg {
+                width: 20px;
+                height: 20px;
             }
             
             /* Buttons Mobile */
             .btn {
-                padding: 0.75rem 1.5rem;
+                padding: var(--space-4) var(--space-5);
                 font-size: 0.9375rem;
-            }
-            
-            .btn-success {
-                width: 100%;
-                max-width: 280px;
+                min-height: 48px;
             }
         }
         
         /* ============================================
-           RESPONSIVE - MOBILE SMALL (max-width: 480px)
+           RESPONSIVE - SMALL MOBILE (max-width: 480px)
            ============================================ */
         @media (max-width: 480px) {
             .container {
-                padding: 0 0.875rem;
-            }
-            
-            .section {
-                padding: 2.5rem 0;
+                padding: 0 var(--space-4);
             }
             
             .section-title {
-                font-size: 1.5rem;
-            }
-            
-            .section-subtitle {
-                font-size: 0.9375rem;
-            }
-            
-            /* Hero Small Mobile */
-            .hero {
-                padding-top: 76px;
-                padding-bottom: 2rem;
-            }
-            
-            .hero-badge {
-                font-size: 0.75rem;
+                font-size: 1.375rem;
             }
             
             .hero-title {
-                font-size: 1.75rem;
-            }
-            
-            .hero-description {
-                font-size: 0.9375rem;
+                font-size: 1.625rem;
             }
             
             .hero-card {
-                padding: 1rem;
-            }
-            
-            .hero-card-icon {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .hero-card-title {
-                font-size: 1rem;
-            }
-            
-            .hero-card-item {
-                padding: 0.5rem;
+                padding: var(--space-4);
             }
             
             .hero-card-item span {
                 font-size: 0.8125rem;
             }
             
-            /* About Small Mobile */
-            .about-icon {
-                width: 48px;
-                height: 48px;
-            }
-            
-            .about-icon i {
-                width: 24px !important;
-                height: 24px !important;
-            }
-            
-            .about-card h3 {
-                font-size: 1.0625rem;
-            }
-            
-            .about-card p {
-                font-size: 0.8125rem;
-            }
-            
-            /* Serviços Small Mobile */
             .servicos-grid {
-                gap: 0.625rem;
+                gap: var(--space-3);
             }
             
             .servico-card {
-                padding: 1rem 0.75rem;
+                padding: var(--space-4) var(--space-3);
             }
             
             .servico-icon {
                 width: 44px;
                 height: 44px;
-            }
-            
-            .servico-icon i {
-                width: 22px !important;
-                height: 22px !important;
+                margin-bottom: var(--space-3);
             }
             
             .servico-card h4 {
                 font-size: 0.75rem;
             }
             
-            /* Timeline Small Mobile */
-            .timeline::before {
-                left: 16px;
+            .timeline-item {
+                padding-left: 52px;
             }
             
-            .timeline-item {
-                padding-left: 48px;
+            .timeline::before {
+                left: 16px;
             }
             
             .timeline-number {
@@ -1893,123 +1810,26 @@
                 font-size: 0.9375rem;
                 border-width: 2px;
             }
-            
-            .timeline-content {
-                padding: 1rem;
-            }
-            
-            /* Prazos Small Mobile */
-            .prazos-diagram {
-                padding: 1rem;
-            }
-            
-            .prazos-flow-icon {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .prazos-flow-icon i {
-                width: 16px !important;
-                height: 16px !important;
-            }
-            
-            .prazos-flow-text {
-                font-size: 0.75rem;
-            }
-            
-            /* FAQ Small Mobile */
-            .faq-question {
-                padding: 0.875rem 1rem;
-            }
-            
-            .faq-question span {
-                font-size: 0.875rem;
-            }
-            
-            .faq-answer {
-                padding: 0 1rem 0.875rem;
-            }
-            
-            .faq-answer p,
-            .faq-answer li {
-                font-size: 0.8125rem;
-            }
-            
-            /* Legislação Small Mobile */
-            .legislacao-card {
-                padding: 1.25rem;
-            }
-            
-            .legislacao-icon {
-                width: 44px;
-                height: 44px;
-            }
-            
-            .legislacao-icon i {
-                width: 22px !important;
-                height: 22px !important;
-            }
         }
         
         /* ============================================
            TOUCH DEVICE OPTIMIZATIONS
            ============================================ */
         @media (hover: none) and (pointer: coarse) {
-            .btn:hover {
-                transform: none;
-            }
-            
+            .btn:hover,
             .about-card:hover,
             .servico-card:hover,
             .legislacao-card:hover,
-            .faq-item:hover {
+            .faq-item:hover,
+            .back-to-top:hover {
                 transform: none;
             }
             
-            .btn:active {
-                transform: scale(0.98);
-            }
-            
+            .btn:active,
             .about-card:active,
             .servico-card:active,
             .legislacao-card:active {
                 transform: scale(0.98);
-            }
-        }
-        
-        /* ============================================
-           LANDSCAPE MOBILE ADJUSTMENTS
-           ============================================ */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .hero {
-                padding-top: 80px;
-                padding-bottom: 1.5rem;
-            }
-            
-            .hero-inner {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-            }
-            
-            .hero-visual {
-                order: 0;
-            }
-            
-            .hero-title {
-                font-size: 1.75rem;
-            }
-            
-            .hero-description {
-                font-size: 0.9375rem;
-                margin-bottom: 1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: row;
-            }
-            
-            .hero-buttons .btn {
-                width: auto;
             }
         }
     </style>
@@ -2019,7 +1839,7 @@
     <header class="header" id="header">
         <div class="container">
             <div class="header-inner">
-                <a href="#inicio">
+                <a href="#inicio" class="logo-link">
                     <img src="assets/logo-semec.png" alt="SEMEC - Secretaria Municipal de Economia" class="logo">
                     <img src="assets/logo-semec-vertical.png" alt="SEMEC" class="logo-mobile">
                 </a>
@@ -2031,13 +1851,13 @@
                     <a href="#servicos" class="nav-link">Serviços</a>
                     <a href="#faq" class="nav-link">FAQ</a>
                     <a href="https://gpi-trb.portovelho.ro.gov.br/ServerExec/acessoBase/" class="btn btn-primary nav-cta" target="_blank">
-                        <i data-lucide="log-in" style="width: 18px; height: 18px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
                         Acessar DTEL
                     </a>
                 </nav>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                    <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 </button>
             </div>
         </div>
@@ -2049,7 +1869,7 @@
             <a href="#servicos" class="nav-link">Serviços</a>
             <a href="#faq" class="nav-link">FAQ</a>
             <a href="https://gpi-trb.portovelho.ro.gov.br/ServerExec/acessoBase/" class="btn btn-primary" target="_blank">
-                <i data-lucide="log-in" style="width: 18px; height: 18px;"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
                 Acessar DTEL
             </a>
         </nav>
@@ -2061,7 +1881,7 @@
             <div class="hero-inner">
                 <div class="hero-content">
                     <div class="hero-badge">
-                        <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
                         Novo Portal de Serviços
                     </div>
                     <h1 class="hero-title">
@@ -2073,11 +1893,11 @@
                     </p>
                     <div class="hero-buttons">
                         <a href="https://gpi-trb.portovelho.ro.gov.br/ServerExec/acessoBase/" class="btn btn-primary" target="_blank">
-                            <i data-lucide="log-in" style="width: 20px; height: 20px;"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
                             Acessar o DTEL
                         </a>
                         <a href="#como-fazer" class="btn btn-secondary">
-                            <i data-lucide="book-open" style="width: 20px; height: 20px;"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
                             Como me credenciar
                         </a>
                     </div>
@@ -2087,7 +1907,7 @@
                     <div class="hero-card">
                         <div class="hero-card-header">
                             <div class="hero-card-icon">
-                                <i data-lucide="mail-check" style="width: 28px; height: 28px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m16 19 2 2 4-4"/></svg>
                             </div>
                             <div>
                                 <div class="hero-card-title">Caixa Postal Virtual</div>
@@ -2096,19 +1916,19 @@
                         </div>
                         <div class="hero-card-items">
                             <div class="hero-card-item">
-                                <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                                 <span>Notificações de lançamento tributário</span>
                             </div>
                             <div class="hero-card-item">
-                                <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                                 <span>Intimações e autos de infração</span>
                             </div>
                             <div class="hero-card-item">
-                                <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
                                 <span>Decisões em processos administrativos</span>
                             </div>
                             <div class="hero-card-item">
-                                <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
                                 <span>Avisos para autorregularização</span>
                             </div>
                         </div>
@@ -2130,38 +1950,44 @@
             <div class="about-grid">
                 <div class="about-card animate-on-scroll">
                     <div class="about-icon">
-                        <i data-lucide="mail" style="width: 32px; height: 32px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     </div>
-                    <h3>Canal Oficial</h3>
-                    <p>
-                        Todas as comunicações tributárias da SERM/SEMEC serão enviadas 
-                        diretamente para sua Caixa Postal Virtual, com validade jurídica 
-                        e dispensa de publicação no Diário Oficial.
-                    </p>
+                    <div>
+                        <h3>Canal Oficial</h3>
+                        <p>
+                            Todas as comunicações tributárias da SERM/SEMEC serão enviadas 
+                            diretamente para sua Caixa Postal Virtual, com validade jurídica 
+                            e dispensa de publicação no Diário Oficial.
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="about-card animate-on-scroll">
                     <div class="about-icon">
-                        <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                     </div>
-                    <h3>Segurança e Praticidade</h3>
-                    <p>
-                        Acesso com certificado digital ICP-Brasil ou conta Gov.br 
-                        (níveis prata ou ouro), garantindo a autenticidade de todas 
-                        as suas interações com o fisco municipal.
-                    </p>
+                    <div>
+                        <h3>Segurança e Praticidade</h3>
+                        <p>
+                            Acesso com certificado digital ICP-Brasil ou conta Gov.br 
+                            (níveis prata ou ouro), garantindo a autenticidade de todas 
+                            as suas interações com o fisco municipal.
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="about-card animate-on-scroll">
                     <div class="about-icon">
-                        <i data-lucide="clock" style="width: 32px; height: 32px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     </div>
-                    <h3>Economia de Tempo</h3>
-                    <p>
-                        Consulte débitos, emita guias, acompanhe processos e solicite 
-                        parcelamentos sem sair de casa, 24 horas por dia, 
-                        7 dias por semana.
-                    </p>
+                    <div>
+                        <h3>Economia de Tempo</h3>
+                        <p>
+                            Consulte débitos, emita guias, acompanhe processos e solicite 
+                            parcelamentos sem sair de casa, 24 horas por dia, 
+                            7 dias por semana.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2179,21 +2005,21 @@
             <div class="credenciamento-grid">
                 <div class="credenciamento-card obrigatorio animate-on-scroll">
                     <div class="credenciamento-header">
-                        <i data-lucide="alert-circle" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                         <h3>Credenciamento Obrigatório</h3>
                     </div>
                     <div class="credenciamento-body">
                         <ul class="credenciamento-list">
                             <li>
-                                <i data-lucide="building-2" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
                                 <span>Todas as <strong>pessoas jurídicas</strong> inscritas nos cadastros fiscais municipais, inclusive no cadastro imobiliário</span>
                             </li>
                             <li>
-                                <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
                                 <span>Contribuintes que aderirem ao <strong>Sistema Nacional da NFS-e</strong>, incluindo profissionais autônomos</span>
                             </li>
                             <li>
-                                <i data-lucide="scroll" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
                                 <span>Outros sujeitos passivos quando determinado em <strong>legislação específica</strong></span>
                             </li>
                         </ul>
@@ -2202,21 +2028,21 @@
                 
                 <div class="credenciamento-card facultativo animate-on-scroll">
                     <div class="credenciamento-header">
-                        <i data-lucide="user-check" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
                         <h3>Credenciamento Facultativo</h3>
                     </div>
                     <div class="credenciamento-body">
                         <ul class="credenciamento-list">
                             <li>
-                                <i data-lucide="user" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                                 <span><strong>Pessoas físicas</strong> não enquadradas nas hipóteses de obrigatoriedade</span>
                             </li>
                             <li>
-                                <i data-lucide="home" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                                 <span>Proprietários de imóveis que desejam receber notificações de <strong>IPTU</strong> eletronicamente</span>
                             </li>
                             <li>
-                                <i data-lucide="sparkles" style="width: 20px; height: 20px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                                 <span>Qualquer cidadão que queira aproveitar a <strong>praticidade</strong> do portal de serviços</span>
                             </li>
                         </ul>
@@ -2242,11 +2068,11 @@
                         <h3>Acesse o Portal do Contribuinte da SEMEC</h3>
                         <p>
                             Entre no portal da Secretaria Municipal de Economia 
-                            e localize a opção de <a href="https://gpi-trb.portovelho.ro.gov.br/ServerExec/acessoBase/?idPortal=dbde30ec-cf59-4803-9653-00121a704021" target="_blank" style="color: var(--azul-principal); font-weight: 600; text-decoration: underline;">CREDENCIAMENTO CONTRIBUINTE</a> e escolha o DTEL.
+                            e localize a opção de <a href="https://gpi-trb.portovelho.ro.gov.br/ServerExec/acessoBase/?idPortal=dbde30ec-cf59-4803-9653-00121a704021" target="_blank">CREDENCIAMENTO CONTRIBUINTE</a> e escolha o DTEL.
                         </p>
                         <div class="timeline-methods">
                             <span class="timeline-method">
-                                <i data-lucide="globe" style="width: 14px; height: 14px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                                 Portal SERM/SEMEC
                             </span>
                         </div>
@@ -2263,11 +2089,11 @@
                         </p>
                         <div class="timeline-methods">
                             <span class="timeline-method">
-                                <i data-lucide="key" style="width: 14px; height: 14px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
                                 Certificado Digital ICP-Brasil
                             </span>
                             <span class="timeline-method">
-                                <i data-lucide="fingerprint" style="width: 14px; height: 14px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4"/><path d="M5 19.5C5.5 18 6 15 6 12c0-.7.12-1.37.34-2"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2"/></svg>
                                 Gov.br (Prata ou Ouro)
                             </span>
                         </div>
@@ -2284,7 +2110,7 @@
                         </p>
                         <div class="timeline-methods">
                             <span class="timeline-method">
-                                <i data-lucide="file-check" style="width: 14px; height: 14px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
                                 TUR-DTEL
                             </span>
                         </div>
@@ -2297,13 +2123,12 @@
                         <h3>Pronto!</h3>
                         <p>
                             Seu credenciamento é único, irrevogável e por prazo indeterminado. 
-                            Acesse periodicamente sua ambiente pela opção ACESSO AO SISTEMA DTEL
-                            e verifique frequentemente a sua Caixa Postal Virtual e utilize os
-                            serviços exclusivos!
+                            Mantenha seus dados cadastrais atualizados e acesse periodicamente 
+                            sua Caixa Postal Virtual.
                         </p>
                         <div class="timeline-methods">
                             <span class="timeline-method">
-                                <i data-lucide="check-circle" style="width: 14px; height: 14px;"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                                 Credenciamento ativo
                             </span>
                         </div>
@@ -2311,9 +2136,9 @@
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 3rem;" class="animate-on-scroll">
+            <div class="timeline-cta animate-on-scroll">
                 <a href="https://gpi-trb.portovelho.ro.gov.br/ServerExec/acessoBase/?idPortal=dbde30ec-cf59-4803-9653-00121a704021" class="btn btn-success" target="_blank">
-                    <i data-lucide="rocket" style="width: 20px; height: 20px;"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
                     Iniciar Credenciamento
                 </a>
             </div>
@@ -2332,56 +2157,56 @@
             <div class="servicos-grid">
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="inbox" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
                     </div>
                     <h4>Caixa Postal Virtual</h4>
                 </div>
                 
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="search" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     </div>
                     <h4>Consulta de Débitos</h4>
                 </div>
                 
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="file-text" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
                     </div>
                     <h4>Emissão de Guias</h4>
                 </div>
                 
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="award" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
                     </div>
                     <h4>Certidões Fiscais</h4>
                 </div>
                 
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="send" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     </div>
                     <h4>Peticionamento Eletrônico</h4>
                 </div>
                 
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="git-branch" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
                     </div>
                     <h4>Acompanhamento Processual</h4>
                 </div>
                 
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="calendar-check" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
                     </div>
                     <h4>Parcelamento de Débitos</h4>
                 </div>
                 
                 <div class="servico-card animate-on-scroll">
                     <div class="servico-icon">
-                        <i data-lucide="plus-circle" style="width: 28px; height: 28px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
                     </div>
                     <h4>Outros Serviços</h4>
                 </div>
@@ -2396,34 +2221,34 @@
                 <div class="prazos-visual animate-on-scroll">
                     <div class="prazos-diagram">
                         <div class="prazos-diagram-title">
-                            <i data-lucide="clock" style="width: 18px; height: 18px; vertical-align: middle;"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             Fluxo de Ciência da Comunicação
                         </div>
                         <div class="prazos-flow">
                             <div class="prazos-flow-item">
                                 <div class="prazos-flow-icon">
-                                    <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                                 </div>
                                 <div class="prazos-flow-text">
-                                    <strong>Comunicação enviada</strong><br>
+                                    <strong>Comunicação enviada</strong>
                                     Disponibilizada na Caixa Postal Virtual
                                 </div>
                             </div>
                             <div class="prazos-flow-item">
                                 <div class="prazos-flow-icon">
-                                    <i data-lucide="eye" style="width: 20px; height: 20px;"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                                 </div>
                                 <div class="prazos-flow-text">
-                                    <strong>Ciência expressa</strong><br>
+                                    <strong>Ciência expressa</strong>
                                     Ao consultar o teor da comunicação
                                 </div>
                             </div>
                             <div class="prazos-flow-item">
                                 <div class="prazos-flow-icon">
-                                    <i data-lucide="timer" style="width: 20px; height: 20px;"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="2" x2="14" y2="2"/><line x1="12" y1="14" x2="12" y2="8"/><circle cx="12" cy="14" r="8"/></svg>
                                 </div>
                                 <div class="prazos-flow-text">
-                                    <strong>Ciência tácita</strong><br>
+                                    <strong>Ciência tácita</strong>
                                     Após 5 dias corridos sem consulta
                                 </div>
                             </div>
@@ -2432,7 +2257,7 @@
                 </div>
                 
                 <div class="prazos-content animate-on-scroll">
-                    <h2 class="section-title" style="text-align: left;">Prazos e Ciência</h2>
+                    <h3>Prazos e Ciência</h3>
                     <p>
                         As comunicações enviadas pelo DTEL têm validade jurídica e são 
                         consideradas pessoais. É fundamental acessar regularmente sua 
@@ -2444,7 +2269,7 @@
                     </p>
                     
                     <div class="prazos-alert">
-                        <i data-lucide="alert-triangle" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                         <p>
                             <strong>Atenção:</strong> Alertas por e-mail ou WhatsApp são meramente 
                             informativos. A não observância ou não recebimento desses alertas não 
@@ -2465,7 +2290,7 @@
             </p>
             
             <div class="faq-search animate-on-scroll">
-                <i data-lucide="search" style="width: 20px; height: 20px;"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 <input type="text" id="faqSearch" placeholder="Buscar pergunta...">
             </div>
             
@@ -2473,7 +2298,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="o que é dtel domicílio tributário eletrônico portal">
                     <button class="faq-question">
                         <span>O que é o DTEL?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -2487,7 +2312,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="obrigatório obrigado credenciar empresa pessoa jurídica">
                     <button class="faq-question">
                         <span>Quem é obrigado a se credenciar?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>O credenciamento é obrigatório para:</p>
@@ -2502,7 +2327,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="como credenciar cadastrar acessar gov.br certificado digital">
                     <button class="faq-question">
                         <span>Como faço o credenciamento?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>O credenciamento pode ser realizado de três formas:</p>
@@ -2517,7 +2342,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="gov.br acesso login certificado digital autenticação">
                     <button class="faq-question">
                         <span>Posso usar o Gov.br para acessar?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -2531,7 +2356,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="ciência comunicação prazo 5 dias notificação">
                     <button class="faq-question">
                         <span>Como funciona a ciência das comunicações?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>A ciência da comunicação é considerada realizada de duas formas:</p>
@@ -2546,7 +2371,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="não acessar caixa postal consequência prazo tácita">
                     <button class="faq-question">
                         <span>O que acontece se eu não acessar minha Caixa Postal?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -2561,7 +2386,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="contador advogado procuração terceiro acesso autorizar">
                     <button class="faq-question">
                         <span>Posso autorizar meu contador a acessar?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -2576,7 +2401,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="penalidade multa sanção não credenciar descumprir">
                     <button class="faq-question">
                         <span>Quais as penalidades por não credenciamento?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>O descumprimento das obrigações previstas na IN 002/2025 sujeita o infrator a:</p>
@@ -2591,7 +2416,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="sistema fora ar indisponível prazo prorrogação">
                     <button class="faq-question">
                         <span>E se o sistema estiver fora do ar no último dia do prazo?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -2605,7 +2430,7 @@
                 <div class="faq-item animate-on-scroll" data-keywords="atualizar dados cadastro email whatsapp telefone">
                     <button class="faq-question">
                         <span>Como atualizar meus dados cadastrais?</span>
-                        <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -2619,7 +2444,7 @@
             </div>
             
             <div class="faq-no-results" id="faqNoResults">
-                <i data-lucide="search-x" style="width: 48px; height: 48px; margin-bottom: 1rem;"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
                 <p>Nenhuma pergunta encontrada para sua busca.</p>
             </div>
         </div>
@@ -2636,26 +2461,32 @@
             <div class="legislacao-cards">
                 <a href="https://semfaz.portovelho.ro.gov.br/uploads/arquivos/2025/12/67765/1765897355instrucao-normativa-no-002-2025-dtel.pdf" class="legislacao-card animate-on-scroll" target="_blank">
                     <div class="legislacao-icon">
-                        <i data-lucide="file-text" style="width: 32px; height: 32px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
                     </div>
-                    <h4>IN 002/2025/GAB/SEMEC</h4>
-                    <p>Instrução Normativa do DTEL</p>
+                    <div>
+                        <h4>IN 002/2025/GAB/SEMEC</h4>
+                        <p>Instrução Normativa do DTEL</p>
+                    </div>
                 </a>
                 
                 <a href="https://sapl.portovelho.ro.leg.br/norma/14805?display" class="legislacao-card animate-on-scroll" target="_blank">
                     <div class="legislacao-icon">
-                        <i data-lucide="book" style="width: 32px; height: 32px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     </div>
-                    <h4>LC 878/2021</h4>
-                    <p>Código Tributário Municipal</p>
+                    <div>
+                        <h4>LC 878/2021</h4>
+                        <p>Código Tributário Municipal</p>
+                    </div>
                 </a>
                 
                 <a href="https://sapl.portovelho.ro.leg.br/norma/23694?display" class="legislacao-card animate-on-scroll" target="_blank">
                     <div class="legislacao-icon">
-                        <i data-lucide="scroll" style="width: 32px; height: 32px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
                     </div>
-                    <h4>Decreto 18.749/2023</h4>
-                    <p>Regulamento do CTM</p>
+                    <div>
+                        <h4>Decreto 18.749/2023</h4>
+                        <p>Regulamento do CTM</p>
+                    </div>
                 </a>
             </div>
         </div>
@@ -2687,16 +2518,16 @@
                 <div>
                     <h4 class="footer-title">Contato</h4>
                     <div class="footer-contact-item">
-                        <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                         <span>Av. Sete de Setembro, nº 237, Centro</span>
                     </div>
                     <div class="footer-contact-item">
-                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         <span>(69) 99942-5251</span>
                     </div>
                     <div class="footer-contact-item">
-                        <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
-                        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="482c2d2e663b2d252d2b0838273a3c273e2d242027663a27662f273e662a3a">[email&#160;protected]</a></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>atendimento.semec@portovelho.ro.gov.br</span>
                     </div>
                 </div>
             </div>
@@ -2709,119 +2540,125 @@
     
     <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
-        <i data-lucide="arrow-up" style="width: 24px; height: 24px;"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
-    
-    <!-- Lucide Icons -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
     
     <!-- JavaScript -->
     <script>
-        // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Lucide Icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        mobileNav.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-            });
-        });
-        
-        // Header scroll effect
-        const header = document.getElementById('header');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
             
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
+            if (mobileMenuBtn && mobileNav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                });
                 
-                // Close all items
-                faqItems.forEach(i => i.classList.remove('active'));
-                
-                // Open clicked item if it wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-                
-                // Reinitialize icons
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
-            });
-        });
-        
-        // FAQ Search
-        const faqSearch = document.getElementById('faqSearch');
-        const faqList = document.getElementById('faqList');
-        const faqNoResults = document.getElementById('faqNoResults');
-        
-        faqSearch.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            let hasResults = false;
+                // Close mobile menu when clicking a link
+                mobileNav.querySelectorAll('.nav-link').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileNav.classList.remove('active');
+                    });
+                });
+            }
             
-            faqItems.forEach(item => {
-                const keywords = item.dataset.keywords.toLowerCase();
-                const questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
-                const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
-                
-                const matches = keywords.includes(searchTerm) || 
-                               questionText.includes(searchTerm) || 
-                               answerText.includes(searchTerm);
-                
-                if (matches || searchTerm === '') {
-                    item.style.display = 'block';
-                    hasResults = true;
+            // Header scroll effect
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
                 } else {
-                    item.style.display = 'none';
+                    header.classList.remove('scrolled');
                 }
             });
             
-            faqNoResults.style.display = hasResults ? 'none' : 'block';
+            // Back to Top Button
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(function(item) {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(function(i) {
+                        i.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            // FAQ Search
+            const faqSearch = document.getElementById('faqSearch');
+            const faqList = document.getElementById('faqList');
+            const faqNoResults = document.getElementById('faqNoResults');
+            
+            if (faqSearch) {
+                faqSearch.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase().trim();
+                    let hasResults = false;
+                    
+                    faqItems.forEach(function(item) {
+                        const keywords = item.dataset.keywords.toLowerCase();
+                        const questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
+                        const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+                        
+                        const matches = keywords.includes(searchTerm) || 
+                                       questionText.includes(searchTerm) || 
+                                       answerText.includes(searchTerm);
+                        
+                        if (matches || searchTerm === '') {
+                            item.style.display = 'block';
+                            hasResults = true;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    faqNoResults.style.display = hasResults ? 'none' : 'block';
+                });
+            }
+            
+            // Animate on Scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animateElements.forEach(function(el) {
+                observer.observe(el);
+            });
         });
-        
-        // Animate on Scroll
-        const animateElements = document.querySelectorAll('.animate-on-scroll');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+    </script>
+</body>
+</html>
